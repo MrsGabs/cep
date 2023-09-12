@@ -1,0 +1,53 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Consulta CEP
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Consulta CEP</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div id="container">
+    <div>
+      <h1>Consultar Endereço</h1>
+      <ion-input label-placement="floating" fill="outline" label="Digite o CEP" placeholder="01537-001" [(ngModel)]="cep"></ion-input>
+      <ion-button expand="full" color="success" (click)="consultaEndereco()">Consultar</ion-button>
+      <div *ngIf="resposta">
+        <ion-card>
+          <p>CEP: {{resposta.cep}}</p>
+          <p>Logradouro: {{resposta.logradouro}}</p>
+          <p>Bairro: {{resposta.bairro}}</p>
+          <p>Cidade: {{resposta.localidade}}</p>
+          <p>Estado: {{resposta.uf}}</p>
+        </ion-card>
+      </div>
+    </div>
+
+
+
+    <div>
+      <h1>Consultar CEP</h1>
+      <ion-list>
+      <ion-input class="input-margin" fill="outline" label="Digite a Rua" label-placement="floating" placeholder="Lins de Vasconcelo" [(ngModel)]="rua"></ion-input>
+      <ion-input class="input-margin" fill="outline" label="Digite a Cidade" label-placement="floating" placeholder="São Paulo" [(ngModel)]="cidade"></ion-input>
+      <ion-input class="input-margin" fill="outline" label="Digite o Estado" label-placement="floating" placeholder="SP" [(ngModel)]="estado"></ion-input>
+      <ion-button expand="full" color="success" (click)="consultaCEP()">Consultar</ion-button>
+      </ion-list>
+      <div *ngIf="resposta2">
+        <ion-card *ngFor="let item of resposta2">
+          <p>CEP: {{item.cep}}</p>
+          <p>Logradouro: {{item.logradouro}}</p>
+          <p>Bairro: {{item.bairro}}</p>
+          <p>Cidade: {{item.localidade}}</p>
+          <p>Estado: {{item.uf}}</p>
+        </ion-card>
+      </div>
+    </div>
+  </div>
+</ion-content>
